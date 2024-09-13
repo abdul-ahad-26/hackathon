@@ -1,14 +1,18 @@
+/* Reset margin and padding */
 * {
   margin: 0;
   padding: 0;
 }
+
 body {
   font-family: Arial, sans-serif;
   color: #303036;
   margin: 20px;
+  padding: 0px;
   background-color: rgba(0, 0, 0, 0.05);
-  font-family: "Poppins", sans-serif;
+  font-family: Times New Roman, serif;
 }
+
 .text-center {
   text-align: center;
 }
@@ -16,71 +20,98 @@ body {
 #resumeForm {
   margin: 0 auto;
   margin-top: 20px;
-  width: 40vw;
-
-  border-radius: 6px;
+  width: 500px;
+  border-radius: 10px;
   background-color: #fff;
-  box-shadow: 0 4px 8px #fffaff;
-  padding: 6px 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
   border: 1px solid #f3e7e7;
 }
-form fieldset {
-  margin-top: 5px;
 
+form fieldset {
+  /* margin-top: 5px; */
   display: flex;
   flex-direction: column;
   padding: 12px 16px;
   border-radius: 6px;
-  border-color: #ffffff;
+  border-color:  #F7F9F9;
+  margin-bottom: 4px;
 }
 
 legend {
   margin-left: 20px;
   font-weight: bold;
 }
+
 label {
-  margin-top: 10px;
+  margin-top: 12px;
+  font-weight: bold;
 }
+
 input,
 textarea {
-  width: 100%;
-  padding: 2px 4px;
-  height: 35px;
+  padding: 10px 8px;
   border-radius: 4px;
   box-sizing: border-box;
-  margin-top: 2px;
-  border: none; /* Remove all borders */
-  border-bottom: 0.1px solid gray; /* Add bottom border */
+  margin-top: 8px;
+  border: none;
+  border-bottom: 1px solid gray;
   outline: none;
   background-color: rgba(0, 0, 0, 0.05);
 }
-
-textarea {
-  resize: vertical;
-  height: 150px;
-  border: none;
+.sec-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgb(145, 144, 144);
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 3px;
+  background-color: #f8fcfb;
+  font-weight: bolder;
 }
 
-.submit{
+
+.btn-toggle {
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+
+textarea {
+  height: 150px;
+}
+
+.submit {
   display: block;
-  margin: 10px auto;
+  margin: 20px auto;
   padding: 10px 20px;
   background-color: rgb(32, 172, 165);
   color: white;
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  width: 50%;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.submit:hover {
+  background-color: rgb(28, 148, 143);
 }
 
 .profilePicture {
   width: 190px;
   height: 200px;
   display: block;
-  margin: 0 auto; /* Center horizontally */
+  margin: 0 auto;
   border-radius: 50%;
   object-fit: cover;
-  border: 0.1px solid #bcafaf;
+  border: 1px solid black;
 }
 
 .tag-line {
@@ -89,44 +120,36 @@ textarea {
   text-align: center;
 }
 
-#resumeOutput{
+#resumeOutput {
   margin: 0 auto;
   margin-top: 20px;
-  width: 40vw;
-
-  border-radius: 6px;
+  width: 500px;
+  border-radius: 10px;
   background-color: #fff;
-  box-shadow: 0 4px 8px #fffaff;
-  padding: 6px 16px;
-  border: 1px solid #f3e7e7;
-}
-
-#resumeOutput h3{
-   
-  margin: 6px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  border: 1px solid black;
+  line-height: 1.5;
   
+
 }
 
-#resumeOutput p{
-   
+#resumeOutput h3 {
+  margin: 12px 0;
+}
+
+#resumeOutput p {
   margin: 8px 0;
-  
 }
 
-#resumeOutput hr{
-   
-  margin-top: 40px ;
-  
-}
-#resumeOutput> hr{
-   
-  margin-top: 8px ;
-  
+#resumeOutput hr {
+  margin-top: 20px;
 }
 
-#resumeOutput h2{
-   
-  margin-top: 8px ;
+#resumeOutput > hr {
+  margin-top: 8px;
+}
 
-  
+#resumeOutput h2 {
+  margin-top: 8px;
 }
