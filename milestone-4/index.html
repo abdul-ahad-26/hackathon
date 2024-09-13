@@ -4,68 +4,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>job catcher</title>
+    <title>Job Catcher</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1 class="text-center">Job Catcher</h1>
+    <div id="createContainer">
+        <div class="header">
+            <h1 class="text-center">Job Catcher</h1>
+            <h4 class="tag-line">An Interactive Resume Builder</h4>
+        </div>
+
+        <form id="resumeForm">
+            <div class="sec-heading">
+                <span id="heading">Personal Information</span>
+                <span class="btn-toggle" data-target="personal-info">-</span>
+            </div>
+            <div id="personal-info" class="section-content">
+                <fieldset class="personal-information">
 
 
-    <h4 class="tag-line ">An Interactive Resume Builder</h4>
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name" required placeholder="Enter Name">
 
-    <form id="resumeForm">
-        <fieldset class="personal-information">
-            <legend>Personal Information</legend>
-            <label for="name">Name:</label>
-            <input type="text" name="name" id="name" required placeholder="Name">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" required placeholder="Enter Email">
 
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email" required placeholder="Email">
+                    <label for="contact">Contact:</label>
+                    <input type="tel" name="contact" id="contact" required placeholder="Enter Contact">
 
-            <label for="contact">Contact:</label>
-            <input type="text" name="contact" id="contact" required placeholder="Contact">
+                    <label for="profilePicture">Profile Picture:</label>
+                    <input type="file" name="profilePicture" id="profilePicture" accept="image/*" required>
+                </fieldset>
+            </div>
 
-            <label for="profilePicture">Profile Picture:</label>
-            <input type="file" name="profilePicture" id="profilePicture" accept="img/*" required>
+            <div class="sec-heading">
+                <span id="heading">Education</span>
+                <span class="btn-toggle" data-target="education-section">-</span>
+            </div>
+            <div id="education-section" class="section-content">
+                <fieldset class="education">
+                    <label for="education">Education:</label>
+                    <textarea name="education" required id="education"></textarea>
+                </fieldset>
+            </div>
 
+            <div class="sec-heading">
+                <span id="heading">Skills</span>
+                <span class="btn-toggle" data-target="skills-section">-</span>
+            </div>
+            <div id="skills-section" class="section-content">
+                <fieldset class="skills">
+                    <label for="skills">Skills:</label>
+                    <textarea name="skills" required id="skills"></textarea>
+                </fieldset>
+            </div>
 
-        </fieldset>
+            <div class="sec-heading">
+                <span id="heading">Work Experience</span>
+                <span class="btn-toggle" data-target="work-experience-section">-</span>
+            </div>
+            <div id="work-experience-section" class="section-content">
+                <fieldset class="workExperience">
+                    <label for="workExperience">Work Experience:</label>
+                    <textarea name="workExperience" required id="workExperience"></textarea>
+                </fieldset>
+            </div>
 
-
-
-
-        <fieldset class="education">
-            <legend>Education</legend>
-            <label for="education">Education:</label>
-            <textarea name="education" required id="education"></textarea>
-        </fieldset>
-
-
-
-        <fieldset class="skills">
-            <legend>Skills</legend>
-            <label for="skills">Skills:</label>
-            <textarea name="skills" required id="skills"></textarea>
-        </fieldset>
-
-
-
-        <fieldset class="workExperience">
-            <legend>Work Experience</legend>
-            <label for="workExperience">Work Experience:</label>
-            <textarea name="workExperience" required id="workExperience"></textarea>
-        </fieldset>
-
-
-
-
-        <button class="submit" type="submit">Generate Resume</button>
-    </form>
-
-    <div id="resumeOutput">
-        <!-- // dynamically populated with user input -->
+            <button class="submit" type="submit">Generate Resume Below</button>
+        </form>
     </div>
+
+    <div id="resumeOutput" class="hidden">
+        <!-- dynamically populated with user input -->
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+
     <script src="script.js"></script>
 </body>
 
