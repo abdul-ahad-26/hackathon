@@ -1,78 +1,64 @@
-"use strict";
-var _a;
-(_a = document
-    .getElementById("resumeForm")) === null || _a === void 0 ? void 0 : _a.addEventListener("submit", function (event) {
+document.addEventListener("DOMContentLoaded", function () {
     var _a;
-    event.preventDefault();
-    //type assertion
-    const nameElement = document.getElementById("name");
-    const emailElement = document.getElementById("email");
-    const contactElement = document.getElementById("contact");
-    const educationElement = document.getElementById("education");
-    const skillsElement = document.getElementById("skills");
-    const workExperienceElement = document.getElementById("workExperience");
-    const profilePictureInput = document.getElementById("profilePicture");
-    if (!nameElement.value ||
-        !emailElement.value ||
-        !contactElement.value ||
-        !profilePictureInput ||
-        !educationElement.value ||
-        !skillsElement.value ||
-        !workExperienceElement.value) {
-        alert("Please fill out all fields.");
-    }
-    else {
-        const name = nameElement.value;
-        const email = emailElement.value;
-        const contact = contactElement.value;
-        const education = educationElement.value;
-        const skills = skillsElement.value;
-        const workExperience = workExperienceElement.value;
-        const profilePictureFile = (_a = profilePictureInput.files) === null || _a === void 0 ? void 0 : _a[0];
-        const profilePictureURL = profilePictureFile
-            ? URL.createObjectURL(profilePictureFile)
-            : "";
-        // Dynamic resume output with contenteditable attributes for editing
-        const resumeOutput = `
-        <h2>Resume</h2>
-        <hr>
-
-        <h3>Personal Information</h3>
-        ${profilePictureFile
-            ? `<img src="${profilePictureURL}" alt="Profile Picture" class="profilePicture">`
-            : ""}
-        <p contenteditable="true" id="editable-name"><strong>Name:</strong> ${name}</p>
-        <p contenteditable="true" id="editable-email"><strong>Email:</strong> ${email}</p>
-        <p contenteditable="true" id="editable-contact"><strong>Contact:</strong> ${contact}</p>
-
-        <hr>
-        <h3>Education</h3>
-        <p contenteditable="true" id="editable-education">${education}</p>
-
-        <hr>
-        <h3>Skills</h3>
-        <p contenteditable="true" id="editable-skills">${skills}</p>
-
-        <hr>
-        <h3>Work Experience</h3>
-        <p contenteditable="true" id="editable-work-experience">${workExperience}</p>
-
-        <hr>
-      `;
-        const resumeOutputElement = document.getElementById("resumeOutput");
-        if (resumeOutputElement) {
-            resumeOutputElement.innerHTML = resumeOutput;
-            // Add event listeners to editable fields to detect changes
-            const editableFields = document.querySelectorAll("[contenteditable]");
-            editableFields.forEach((field) => {
-                field.addEventListener("input", (e) => {
-                    const target = e.target;
-                    console.log(`${target.id} updated to:`, target.textContent);
-                });
-            });
+    // Handle form submission
+    (_a = document
+        .getElementById("resumeForm")) === null || _a === void 0 ? void 0 : _a.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent traditional form submission
+        // Get the resume output  and create container
+        var resumeElement = document.getElementById("resumeOutput");
+        var createContainer = document.getElementById("createContainer");
+        // Check if resume output element is found
+        if (resumeElement) {
+            // Remove the 'hidden' class to show the resume output
+            resumeElement.classList.remove("hidden"); // Show the resume output
+            createContainer === null || createContainer === void 0 ? void 0 : createContainer.classList.add("hidden"); // Hide the create container
+            // Retrieve input values from the form
+            // const username = (document.getElementById('username') as HTMLInputElement).value;
+            var name_1 = document.getElementById("name")
+                .value;
+            var email = document.getElementById("email")
+                .value;
+            var contact = document.getElementById("contact")
+                .value;
+            var education = document.getElementById("education").value;
+            var skills = document.getElementById("skills").value;
+            var workExperience = document.getElementById("workExperience").value;
+            // Handle Profile Picture upload
+            var profilePictureInput = document.getElementById("profilePicture");
+            var profilePictureURL = "";
+            if (profilePictureInput &&
+                profilePictureInput.files &&
+                profilePictureInput.files.length > 0) {
+                var file = profilePictureInput.files[0];
+                profilePictureURL = URL.createObjectURL(file); // Create a URL for the image
+            }
+            resumeElement.innerHTML = "\n                <h2>Resume</h2>\n                <h3>Profile Picture</h3>\n                ".concat(profilePictureURL
+                ? "<img src=\"".concat(profilePictureURL, "\" alt=\"Profile Picture\" class=\"profilePicture\">")
+                : "", "\n                \n                <p contenteditable=\"true\" id=\"editable-name\"><strong>Name:</strong> ").concat(name_1, "</p>\n                <p contenteditable=\"true\" id=\"editable-email\"><strong>Email:</strong> ").concat(email, "</p>\n                <p contenteditable=\"true\" id=\"editable-contact\"><strong>Contact:</strong> ").concat(contact, "</p>\n                <h3>Education</h3>\n                <p contenteditable=\"true\"  id=\"editable-education\">").concat(education, "</p>\n                <h3>Skills</h3>\n                <p contenteditable=\"true\" id=\"editable-skills\">").concat(skills, "</p>\n                <h3>Work Experience</h3>\n                <p contenteditable=\"true\"  id=\"editable-work-experience\">").concat(workExperience, "</p>\n                <br>\n                 <button class=\"submit\" id=\"downloadPDF\">Download PDF</button>\n            ");
         }
         else {
             console.error("Element with id 'resumeOutput' not found.");
         }
-    }
+    });
+    // Toggle visibility for each section
+    document.querySelectorAll(".btn-toggle").forEach(function (button) {
+        button.addEventListener("click", function () {
+            // Get the target section ID from data attribute
+            var targetId = this.getAttribute("data-target");
+            if (targetId) {
+                var sectionContent = document.getElementById(targetId);
+                // Toggle visibility
+                if (sectionContent) {
+                    if (sectionContent.classList.contains("hidden")) {
+                        sectionContent.classList.remove("hidden");
+                        this.textContent = "-"; // Change button text to '-' when visible
+                    }
+                    else {
+                        sectionContent.classList.add("hidden");
+                        this.textContent = "+"; // Change button text to '+' when hidden
+                    }
+                }
+            }
+        });
+    });
 });
